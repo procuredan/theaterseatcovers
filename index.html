@@ -225,7 +225,7 @@ Theater Seat Covers
   <div class="form-stat"><strong>80%</strong><span>Typical Savings</span></div>
   <div class="form-stat"><strong>Fast</strong><span>Turnaround</span></div>
 </div>
-<form action="https://leads.procuremedia.com/submit" method="POST">
+<form action="https://procure-lead-engine.dan-fda.workers.dev/submit" method="POST">
   <input type="hidden" name="lead_source" value="theaterseatcovers.com" />
   <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true" />
   <input type="hidden" name="site" value="theaterseatcovers.com" />
@@ -492,6 +492,48 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+</script>
+<!-- Procure form analytics — GA4 funnel events (no PII to GA) + partial capture to separate DB -->
+<script>
+(function(){
+  var form = document.querySelector('form'); if(!form) return;
+  var ENDPOINT = 'https://procure-lead-engine.dan-fda.workers.dev/partial';
+  var SITE = 'theaterseatcovers.com';
+  var SKIP = {_gotcha:1,_redirect:1,site:1,lead_source:1,vertical:1,pm_sid:1,gclid:1,gbraid:1,wbraid:1,utm_source:1,utm_medium:1,utm_campaign:1,utm_term:1,utm_content:1};
+  var FIELDS = [];
+  Array.prototype.forEach.call(form.querySelectorAll('[name]'), function(el){
+    var n=el.name; if(!n||SKIP[n]||el.type==='hidden') return; if(FIELDS.indexOf(n)<0) FIELDS.push(n);
+  });
+  var sid;
+  try { sid = sessionStorage.getItem('pm_sid'); if(!sid){ sid = (window.crypto && crypto.randomUUID ? crypto.randomUUID() : (Date.now()+'-'+Math.random())); sessionStorage.setItem('pm_sid', sid); } }
+  catch(e){ sid = Date.now()+'-'+Math.random(); }
+  var attr = {};
+  try { var c=(document.cookie.match(/(?:^|; )pm_attr=([^;]*)/)||[])[1]; if(c) attr=JSON.parse(decodeURIComponent(c))||{}; } catch(e){}
+  if(!form.querySelector('[name="pm_sid"]')){ var h=document.createElement('input'); h.type='hidden'; h.name='pm_sid'; h.value=sid; form.appendChild(h); }
+  var started=false, reached={}, lastField='', t=null;
+  function v(n){ var el=form.querySelector('[name="'+n+'"]'); return el ? (el.value||'').trim() : ''; }
+  function fullname(){ return v('name') || [v('first_name'),v('last_name')].filter(Boolean).join(' '); }
+  function extra(){ var o={}, core={first_name:1,last_name:1,name:1,email:1,phone:1,association:1,community_size:1,role:1};
+    FIELDS.forEach(function(n){ if(!core[n]){ var val=v(n); if(val) o[n]=val; } }); return JSON.stringify(o); }
+  function snap(sub){ return {
+    session_id:sid, site:SITE, last_field:lastField, fields_reached:Object.keys(reached).length, submitted:sub?1:0,
+    name:fullname(), email:v('email'), phone:v('phone'),
+    association:v('association'), community_size:v('community_size'), role:v('role'), extra:extra(),
+    gclid:attr.gclid||'', utm_source:attr.utm_source||'', utm_medium:attr.utm_medium||'', utm_campaign:attr.utm_campaign||'',
+    utm_term:attr.utm_term||'', utm_content:attr.utm_content||'', landing:attr.landing||'', referrer:attr.referrer||'' }; }
+  function beacon(sub){ try{ var b=new Blob([JSON.stringify(snap(sub))],{type:'text/plain'});
+    if(navigator.sendBeacon) navigator.sendBeacon(ENDPOINT,b); else fetch(ENDPOINT,{method:'POST',body:JSON.stringify(snap(sub)),mode:'no-cors',keepalive:true}); }catch(e){} }
+  function ga(n,p){ try{ if(window.gtag) gtag('event',n,p||{}); }catch(e){} }
+  form.addEventListener('focusin', function(){ if(!started){ started=true; ga('form_start',{form:SITE}); beacon(false); } });
+  FIELDS.forEach(function(n,idx){ var el=form.querySelector('[name="'+n+'"]'); if(!el) return;
+    function mark(){ if(v(n) && !reached[n]){ reached[n]=true; lastField=n; ga('form_progress',{field_name:n, step:idx+1}); } }
+    el.addEventListener('blur', function(){ mark(); clearTimeout(t); t=setTimeout(function(){ beacon(false); },400); });
+    el.addEventListener('change', function(){ mark(); beacon(false); });
+  });
+  form.addEventListener('submit', function(){ beacon(true); });
+  window.addEventListener('pagehide', function(){ if(started) beacon(false); });
+  document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='hidden' && started) beacon(false); });
+})();
 </script>
 </body>
 </html>
