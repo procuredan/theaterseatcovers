@@ -171,13 +171,24 @@ footer a{color:#A7BED1;display:block;margin-bottom:12px;}
 .thanks h1{font-size:40px;color:var(--navy);margin-bottom:16px;}
 .thanks p{font-size:19px;color:var(--muted);margin-bottom:14px;}
 @media(max-width:980px){
-.hero-grid,.review-grid,.how-grid,.footer-grid,.stats-grid,.seg-grid{grid-template-columns:1fr;}
+.hero-grid,.review-grid,.how-grid,.footer-grid,.stats-grid,.seg-grid,.ba-grid{grid-template-columns:1fr;}
 .form-grid{grid-template-columns:1fr;}
 .hero-points{grid-template-columns:1fr;}
 .form-stats{flex-wrap:wrap;}
 .form-stat{flex:1 1 45%;}
 }
 @media(max-width:640px){.nav-phone{display:none;}}
+.results{background:#fff;}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1040px;margin:0 auto;}
+.ba-card{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);background:#fff;}
+.ba-card img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;}
+.ba-tag{position:absolute;top:14px;left:14px;font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#fff;padding:7px 14px;border-radius:999px;box-shadow:0 4px 12px rgba(0,0,0,.28);}
+.ba-before{background:#6b7280;}
+.ba-after{background:var(--gold);color:var(--navy);}
+.ba-cap{padding:16px 18px;color:var(--muted);font-size:15px;text-align:center;}
+.ba-video{max-width:1040px;margin:38px auto 0;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);background:#000;}
+.ba-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000;}
+.ba-vcap{text-align:center;color:var(--muted);font-size:15px;margin-top:16px;}
 .trust-strip{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px;}
 .tbadge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#5B6B7C;background:#F4F7FB;border:1px solid #E5EBF2;border-radius:999px;padding:5px 11px;white-space:nowrap;}
 </style>
@@ -316,6 +327,21 @@ Theater Seat Covers
 <div class="stat"><h2><span>$500+</span></h2><p>Cost To Replace New</p></div>
 <div class="stat"><h2><span>80%</span></h2><p>Typical Savings</p></div>
 <div class="stat"><h2><span>Nationwide</span></h2><p>Service Coverage</p></div>
+</div>
+</section>
+
+<section class="section results" id="results">
+<div class="container">
+<div class="section-head">
+<div class="eyebrow">Real Results</div>
+<h2>Same seats. <br>Restored, not replaced.</h2>
+<p>Real cinema recliners we re-covered — worn, peeling vinyl brought back to like-new for a fraction of the cost of buying new chairs. Watch a full auditorium come back to life.</p>
+</div>
+<div class="ba-grid">
+<figure class="ba-card"><span class="ba-tag ba-before">Before</span><img src="/assets/before.jpg" alt="Worn, peeling cinema recliners before reupholstery" loading="lazy" width="1600" height="1200"><figcaption class="ba-cap">Before — cracked, peeling vinyl on the headrests and seats</figcaption></figure>
+<figure class="ba-card"><span class="ba-tag ba-after">After</span><img src="/assets/after.jpg" alt="The same cinema recliners after reupholstery, like new" loading="lazy" width="1600" height="1200"><figcaption class="ba-cap">After — re-covered in commercial-grade vinyl, like new</figcaption></figure>
+</div>
+<div class="ba-video"><video controls preload="none" playsinline poster="/assets/reupholster-poster.jpg"><source src="/assets/reupholster.mp4" type="video/mp4">Your browser does not support the video tag.</video></div><p class="ba-vcap">A full auditorium re-covered in place — no chairs torn out, no long shutdown.</p>
 </div>
 </section>
 
