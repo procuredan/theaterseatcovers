@@ -137,8 +137,8 @@ h1{font-size:clamp(40px,5.4vw,68px);line-height:1.02;font-weight:600;letter-spac
 .form-card select{appearance:none;}
 .form-card input:not([type="checkbox"]):not([type="radio"]):focus,.form-card select:focus,.form-card textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px rgba(225,29,42,.22);}
 .submit-btn{width:100%;justify-content:center;padding:17px;font-size:17px;margin-top:6px;}
-.trust-strip{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:13px;}
-.tbadge{font-size:11px;font-weight:600;color:var(--muted);background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap;}
+.trust-strip{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:13px;}
+.tbadge{font-size:10.5px;font-weight:600;color:var(--muted);background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:5px 9px;white-space:nowrap;}
 .secondary-label{font-size:13px;font-weight:600;color:var(--ink2);margin:16px 0 8px;}
 .secondary-services-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;font-size:13.5px;color:var(--ink2);}
 .secondary-services-grid label{display:flex;gap:9px;align-items:flex-start;line-height:1.35;}
@@ -351,22 +351,8 @@ footer{padding:60px 0 34px;border-top:1px solid var(--line);margin-top:80px;}
 </select>
 </div>
 <div class="">
-<label class="field-label" for="service_needed">What You Need</label>
-<select id="service_needed" name="service_needed" required>
-<option value="">Select one</option>
-<option>Seat covers only</option>
-<option>Full reupholstery</option>
-<option>Foam / cushion repair</option>
-<option>Not sure — need assessment</option>
-</select>
-</div>
-<div class="">
 <label class="field-label" for="state">State</label>
 <input id="state" type="text" name="state" placeholder="e.g. NV" autocomplete="address-level1">
-</div>
-<div class="">
-<label class="field-label" for="screens">Number of Screens</label>
-<input id="screens" type="text" name="screens" placeholder="Optional">
 </div>
 <div class="full">
 <label class="field-label" for="project_details">Tell us about your seating</label>
@@ -375,7 +361,9 @@ footer{padding:60px 0 34px;border-top:1px solid var(--line);margin-top:80px;}
 <div class="full">
 <p style="font-weight:700; color:#142132; margin:4px 0 14px; font-size:16px;">Most operators save well over half the cost of replacement — and reopen in days, not months.</p>
 <button class="btn btn-primary submit-btn" type="submit">Get My Free Quote →</button>
-<div class="trust-strip"><span class="tbadge">🔒 SSL Secured</span><span class="tbadge">✓ TCPA-Compliant Consent</span><span class="tbadge">🚫 Never Sold or Shared</span><span class="tbadge">✓ Free &amp; No Obligation</span></div>
+<div class="trust-strip"><span class="tbadge">🔒 SSL Secured</span>
+<span class="tbadge">🚫 Never Sold or Shared</span>
+<span class="tbadge">✓ Free &amp; No Obligation</span></div>
 
 </div>
 </div>
