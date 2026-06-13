@@ -89,6 +89,15 @@ img{max-width:100%;}
 .hero-points{margin:28px 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 22px;max-width:640px;}
 .hero-points div{display:flex;align-items:flex-start;gap:12px;color:#fff;font-size:16px;}
 .hero-points span{color:var(--gold);font-weight:800;}
+.hero-ba{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:12px;margin-bottom:28px;max-width:560px;}
+.hero-ba-head{display:flex;flex-direction:column;gap:2px;margin:2px 4px 11px;}
+.hero-ba-title{display:flex;align-items:center;gap:9px;color:#fff;font-weight:800;font-size:16px;letter-spacing:-.2px;}
+.hero-ba-title b{color:var(--gold);font-size:18px;line-height:1;}
+.hero-ba-sub{color:#AEBED0;font-size:12.5px;}
+.hero-ba-imgs{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.hero-ba-fig{position:relative;border-radius:10px;overflow:hidden;margin:0;}
+.hero-ba-fig img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;}
+.hero-ba-tag{position:absolute;top:8px;left:8px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#fff;padding:4px 9px;border-radius:999px;box-shadow:0 3px 8px rgba(0,0,0,.3);}
 .trust-line{margin:8px 0 26px;font-size:14px;color:#C7D8E7;font-weight:500;}
 .form-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);color:var(--text);overflow:hidden;}
 .form-head{background:var(--accent);color:#fff;padding:24px 32px;}
@@ -100,6 +109,10 @@ img{max-width:100%;}
 .form-stat:last-child{border-right:none;}
 .form-stat strong{display:block;font-size:18px;font-weight:800;color:var(--navy);line-height:1.2;}
 .form-stat span{font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);font-weight:600;}
+.form-stat--hl{background:rgba(225,29,42,.05);}
+.form-stat--hl strong{color:var(--accent);font-size:21px;}
+.form-stat--strike strong{color:#9aa6b2;text-decoration:line-through;text-decoration-color:#c2ccd6;}
+.stats-kicker{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);text-align:center;margin-bottom:8px;}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 .form-grid .full{grid-column:1/-1;}
 .field-label{display:block;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;}
@@ -215,9 +228,19 @@ Theater Seat Covers
 <section class="hero">
 <div class="container hero-grid">
 <div>
+<div class="hero-ba">
+<div class="hero-ba-head">
+<div class="hero-ba-title"><b>↻</b> Update with no downtime</div>
+<div class="hero-ba-sub">The same seats, recovered in place — while you stay open.</div>
+</div>
+<div class="hero-ba-imgs">
+<figure class="hero-ba-fig"><span class="hero-ba-tag ba-before">Before</span><img src="/assets/before.jpg" alt="Worn movie theater seats before recovering" loading="eager" width="800" height="600"></figure>
+<figure class="hero-ba-fig"><span class="hero-ba-tag ba-after">After</span><img src="/assets/after.jpg" alt="The same movie theater seats after recovering, like new" loading="eager" width="800" height="600"></figure>
+</div>
+</div>
 <div class="eyebrow">Free Cinema Seat Cover &amp; Reupholstery Quote</div>
-<h1 class="hero-title">Could Your Theater Seating <span class="highlight">Use an Overhaul?</span></h1>
-<p>Worn, torn cinema seats don't have to mean buying all-new chairs. We recover and reupholster movie theater seating so your theaters look and feel new again — for a fraction of replacement cost.</p>
+<h1 class="hero-title">Don't Replace Your Theater Seats. <span class="highlight">Recover Them for 80% Less.</span></h1>
+<p>Same seats, looking brand-new — about $100 a seat instead of $500+ to buy new chairs. Work is phased around your showtimes, so you never go dark.</p>
 <p class="mini-proof">Custom seat covers and full reupholstery for single-screen theaters, multiplexes, and full circuits — in commercial-grade, fire-rated materials.</p>
 <div class="hero-points">
 <div><span>✓</span> Reupholster instead of replace — keep your house style, lose the wear</div>
@@ -235,11 +258,12 @@ Theater Seat Covers
 <p>Tell us about your seating and a specialist follows up — no obligation.</p>
 </div>
 <div class="form-body">
+<div class="stats-kicker">Recover, don't replace</div>
 <div class="form-stats">
-  <div class="form-stat"><strong>~$100</strong><span>Per Seat</span></div>
-  <div class="form-stat"><strong>$500+</strong><span>To Replace</span></div>
-  <div class="form-stat"><strong>80%</strong><span>Typical Savings</span></div>
-  <div class="form-stat"><strong>Fast</strong><span>Turnaround</span></div>
+  <div class="form-stat form-stat--hl"><strong>~$100</strong><span>Per seat to recover</span></div>
+  <div class="form-stat form-stat--strike"><strong>$500+</strong><span>What new seats cost</span></div>
+  <div class="form-stat form-stat--hl"><strong>~80%</strong><span>Less than replacing</span></div>
+  <div class="form-stat"><strong>Zero</strong><span>Downtime · stay open</span></div>
 </div>
 <form action="https://procure-lead-engine.dan-fda.workers.dev/submit" method="POST">
   <input type="hidden" name="lead_source" value="theaterseatcovers.com" />
