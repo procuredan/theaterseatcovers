@@ -98,12 +98,17 @@ h1{font-size:clamp(40px,5.4vw,68px);line-height:1.02;font-weight:600;letter-spac
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 26px;}
 .chip{display:inline-flex;align-items:center;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:9px 15px;font-size:13.5px;font-weight:600;color:var(--ink2);box-shadow:var(--sh-sm);}
 .chip .ck{color:var(--redBright);font-weight:800;}
-.proof-row{display:flex;align-items:center;gap:15px;}
-.proof-row .pics{display:flex;}
-.proof-row .pics img{width:60px;height:60px;border-radius:14px;object-fit:cover;border:3px solid #2a2a2d;box-shadow:var(--sh-sm);}
-.proof-row .pics img:nth-child(2){margin-left:-16px;}
-.proof-row small{font-size:13px;color:var(--muted);line-height:1.4;}
-.proof-row b{color:var(--ink);}
+.hero-ba{margin-top:6px;}
+.hero-ba-imgs{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.hero-ba-fig{position:relative;border-radius:16px;overflow:hidden;box-shadow:var(--sh-md);margin:0;}
+.hero-ba-fig img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;}
+.hero-ba-tag{position:absolute;top:10px;left:10px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#fff;padding:4px 10px;border-radius:999px;box-shadow:0 3px 8px rgba(0,0,0,.4);}
+.hero-ba-tag.b{background:#6f6862;}
+.hero-ba-tag.a{background:var(--green);}
+.hero-ba-cap{display:flex;align-items:center;gap:11px;margin-top:15px;}
+.hero-ba-cap .ic{width:32px;height:32px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;flex:none;}
+.hero-ba-cap strong{display:block;font-size:16px;font-weight:700;color:var(--ink);}
+.hero-ba-cap span{font-size:13.5px;color:var(--muted);}
 
 /* form (reuses heroForm classes) */
 .form-shell{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:30px;padding:8px;box-shadow:var(--sh-lg);}
@@ -286,9 +291,12 @@ footer{padding:60px 0 34px;border-top:1px solid var(--line);margin-top:80px;}
 <span class="chip"><span class="ck">✓</span> Commercial-grade, fire-rated fabrics built for high-traffic seating</span>
 <span class="chip"><span class="ck">✓</span> Work phased around showtimes so you never go dark</span>
 <span class="chip"><span class="ck">✓</span> Free quote — no cost, no obligation</span></div>
-<div class="proof-row reveal">
-<div class="pics"><img src="/assets/before.jpg" alt="Before"><img src="/assets/after.jpg" alt="After"></div>
-<small><b>Update with no downtime</b><br>The same seats, recovered in place — while you stay open.</small>
+<div class="hero-ba reveal">
+<div class="hero-ba-imgs">
+<figure class="hero-ba-fig"><span class="hero-ba-tag b">Before</span><img src="/assets/before.jpg" alt="Worn movie theater seats before recovering"></figure>
+<figure class="hero-ba-fig"><span class="hero-ba-tag a">After</span><img src="/assets/after.jpg" alt="The same seats after recovering, like new"></figure>
+</div>
+<div class="hero-ba-cap"><span class="ic" aria-hidden="true">↻</span><div><strong>Update with no downtime</strong><span>The same seats, recovered in place — while you stay open.</span></div></div>
 </div>
 </div>
 <div class="form-shell reveal"><div class="form-card" id="form">
